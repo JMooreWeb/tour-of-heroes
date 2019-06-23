@@ -1,11 +1,28 @@
 <div *ngIf="hero">
   <h2>{{hero.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{hero.id}}</div>
   <div>
-    <label>name:
-      <input [(ngModel)]="hero.name" placeholder="name"/>
-    </label>
+    <span>ID: </span>{{hero.id}}
   </div>
-  <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>
+  <div>
+    <label>Name: <input [(ngModel)]="hero.name" placeholder="name" /></label>
+  </div>
+  <div>
+      <label>Powers: </label>
+      <ul class="powers">
+        <li *ngFor="let power of powers">
+          <a routerLink="/power/detail/{{power.id}}">
+            <span class="badge">{{power.id}}</span> {{power.name}}
+          </a>
+          <button class="delete" title="delete power" (click)="delete(power)">x</button>
+        </li>
+      </ul>
+      <label>
+        <!-- Available Powers: 
+        <select>
+          <option *ngFor="let power of powers" [value]="{{power.id}}">{{power.id}}</option>
+        </select> -->
+      </label>
+  </div>
+  <button (click)="goBack()">Back</button>
+  <button (click)="save()">Save</button>
 </div>
