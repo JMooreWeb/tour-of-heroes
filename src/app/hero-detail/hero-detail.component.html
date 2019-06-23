@@ -7,21 +7,22 @@
     <label>Name: <input [(ngModel)]="hero.name" placeholder="name" /></label>
   </div>
   <div>
-      <label>Powers: </label>
+      <!-- <label>Powers: </label>
       <ul class="powers">
-        <li *ngFor="let power of powers">
+        <li *ngFor="let power of hero.powers">
           <a routerLink="/power/detail/{{power.id}}">
-            <span class="badge">{{power.id}}</span> {{power.name}}
+            <span class="badge">{{power.id}}</span>{{power.name}}
           </a>
           <button class="delete" title="delete power" (click)="delete(power)">x</button>
         </li>
-      </ul>
-      <label>
-        <!-- Available Powers: 
+      </ul> -->
+      <!-- <label>
+        Available Powers: 
         <select>
-          <option *ngFor="let power of powers" [value]="{{power.id}}">{{power.id}}</option>
-        </select> -->
-      </label>
+          <option *ngFor="let heroPower of heroPowers" value="{{heroPower.id}}">{{heroPower.name}}</option>
+        </select>
+        <button (click)="addPower()">Add Power</button>
+      </label> -->
   </div>
   <button (click)="goBack()">Back</button>
   <button (click)="save()">Save</button>

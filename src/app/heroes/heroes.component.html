@@ -1,18 +1,43 @@
-<h2>My Heroes</h2>
+<h2>Manage Heroes</h2>
 
-<div>
-  <label>Hero name:
-    <input #heroName />
-  </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(heroName.value); heroName.value=''">add</button>
+<br>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1">Hero Name</button>
+      </div>
+      <input #heroName type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+      <div class="input-group-append" id="button-addon4">
+          <button class="btn btn-success" type="button" (click)="add(heroName.value); heroName.value=''">Add</button>
+        </div>
+    </div>    
+  </div>
 </div>
 
-<ul class="heroes">
-  <li *ngFor="let hero of heroes">
-    <a routerLink="/hero/detail/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </a>
-    <button class="delete" title="delete hero" (click)="delete(hero)">x</button>
-  </li>
-</ul>
+<br>
+
+<div class="row">
+    <div class="col-md-12">
+      <table class="table table-sm table-border table-collapse table-hover">
+        <thead>
+          <tr>
+            <th>ID#</th>
+            <th>Name</th>
+            <th>Manage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let hero of heroes" routerLink="/hero/detail/{{hero.id}}">
+            <td><a>{{ hero.id }}</a></td>
+            <td>{{ hero.name }}</td>
+            <td>
+              <button type="button" class="btn btn-info" title="update hero" (click)="update(hero)">Update</button>&nbsp;
+              <button type="button" class="btn btn-danger" title="delete hero" (click)="delete(hero)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>      
+    </div>
+  </div>

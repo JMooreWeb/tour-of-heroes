@@ -6,7 +6,7 @@ import { PowerService } from '../services/power.service';
 @Component({
   selector: 'app-powers',
   templateUrl: './powers.component.html',
-  styleUrls: ['./powers.component.css']
+  // styleUrls: ['./powers.component.css']
 })
 export class PowersComponent implements OnInit {
   powers: Power[];
@@ -29,6 +29,10 @@ export class PowersComponent implements OnInit {
       .subscribe(power => {
         this.powers.push(power);
       });
+  }
+
+  update(power: Power) {
+    alert('Update hero power...');
   }
 
   delete(power: Power) {

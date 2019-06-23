@@ -8,7 +8,7 @@ import { PowerService } from '../services/power.service';
 @Component({
   selector: 'app-power-detail',
   templateUrl: './power-detail.component.html',
-  styleUrls: ['./power-detail.component.css']
+  // styleUrls: ['./power-detail.component.css']
 })
 export class PowerDetailComponent implements OnInit {
   @Input() power: Power;
