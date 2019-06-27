@@ -7,6 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Hero } from '../models/hero.model';
 import { Power } from '../models/power.model';
 import { MessageService } from './message.service';
+import { ToastrService } from 'ngx-toastr';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,11 +16,13 @@ const httpOptions = {
 @Injectable({ providedIn: 'root' })
 export class HeroService {
 
-  private heroesUrl = 'api/heroes';       // URL to web api
+  private heroesUrl = 'api/heroes';            // URL to web api
+  private heroPowersUrl = 'api/heroPowers';
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private messageService: MessageService,
+    private toastr: ToastrService) { }
 
   /** GET heroes from the server */
   getHeroes(): Observable<Hero[]> {
@@ -30,15 +33,15 @@ export class HeroService {
       );
   }
 
-  getHeroPowers(id: number): Observable<Power[]> {
+  getHeroPowers(id: number): Observable<Hero> {
     // alert('getHeroPower => id = ' + id);
-    const url = `${this.heroesUrl}/${id}`;
+    const url = `${this.heroPowersUrl}/${id}`;
 
     console.log(url);
 
-    return this.http.get<Power[]>(url).pipe(
+    return this.http.get<Hero>(url).pipe(
       tap(_ => this.log(`fetched hero id=${id}`)),
-      catchError(this.handleError<Power[]>(`getHero id=${id}`))
+      catchError(this.handleError<Hero>(`getHero id=${id}`))
     );
   }
 
@@ -127,7 +130,11 @@ export class HeroService {
   }
 
   /** Log a HeroService message with the MessageService */
+  // private log(message: string) {
+  //   this.messageService.add(`HeroService: ${message}`);
+  // }
+
   private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
+    this.toastr.success(`HeroService: ${message}`);
   }
 }

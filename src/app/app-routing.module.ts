@@ -6,14 +6,19 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { PowersComponent } from './powers/powers.component';
 import { PowerDetailComponent } from './power-detail/power-detail.component';
+import { NotFoundComponent } from './core/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'heroes', component: HeroesComponent },
+  {
+    path: 'heroes',
+    loadChildren: () => import('./heroes/heroes.module').then(m => m.HeroesModule)
+  },
   { path: 'hero/detail/:id', component: HeroDetailComponent },
   { path: 'powers', component: PowersComponent },
-  { path: 'power/detail/:id', component: PowerDetailComponent }
+  { path: 'power/detail/:id', component: PowerDetailComponent },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

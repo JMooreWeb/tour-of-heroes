@@ -9,7 +9,7 @@ export class InMemoryDataService implements InMemoryDbService {
     const heroes = [
       { id: 10, name: 'in-memory-data' },
       { id: 11, name: 'Iron-Man' },
-      { id: 12, name: 'Spider-Man' },
+      { id: 12, name: 'Spider-Man', powers: { id: 102, name: 'Super Strength' }},
       { id: 13, name: 'Hulk' },
       { id: 14, name: 'Thor' },
       { id: 15, name: 'Black Panther' },
@@ -34,10 +34,10 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     const heroPowers = [
-      { id: 1001, heroId: 11, powerId: 102 },
-      { id: 1002, heroId: 11, powerId: 106 },
-      { id: 1003, heroId: 11, powerId: 109 },
-      { id: 1004, heroId: 11, powerId: 110 },
+      { id: 1001, heroId: 12, powerId: 102 },
+      { id: 1002, heroId: 12, powerId: 106 },
+      { id: 1003, heroId: 12, powerId: 109 },
+      { id: 1004, heroId: 12, powerId: 110 },
     ];
 
     return { heroes, powers, heroPowers };

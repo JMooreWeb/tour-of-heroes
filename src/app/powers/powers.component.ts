@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Power } from '../models/power.model';
 import { PowerService } from '../services/power.service';
 
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-powers',
   templateUrl: './powers.component.html',
@@ -11,7 +13,7 @@ import { PowerService } from '../services/power.service';
 export class PowersComponent implements OnInit {
   powers: Power[];
 
-  constructor(private powerService: PowerService) { }
+  constructor(private powerService: PowerService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.getAllPowers();

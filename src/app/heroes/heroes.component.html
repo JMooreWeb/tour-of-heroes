@@ -3,14 +3,14 @@
 <br>
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-12">
     <div class="input-group">
       <div class="input-group-prepend">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon1">Hero Name</button>
+        <button type="button" class="btn btn-secondary" id="button-addon1">Hero Name</button>
       </div>
       <input #heroName type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
       <div class="input-group-append" id="button-addon4">
-          <button class="btn btn-success" type="button" (click)="add(heroName.value); heroName.value=''">Add</button>
+          <button type="button" class="btn btn-success" (click)="add(heroName.value); heroName.value=''">Add</button>
         </div>
     </div>    
   </div>
@@ -29,12 +29,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let hero of heroes" routerLink="/hero/detail/{{hero.id}}">
+          <tr *ngFor="let hero of heroes" routerLink="/hero/detail/{{hero.id}}" style="cursor: pointer;">
             <td><a>{{ hero.id }}</a></td>
             <td>{{ hero.name }}</td>
             <td>
-              <button type="button" class="btn btn-info" title="update hero" (click)="update(hero)">Update</button>&nbsp;
-              <button type="button" class="btn btn-danger" title="delete hero" (click)="delete(hero)">Delete</button>
+              <button type="button" class="btn btn-info btn-sm" title="update hero" (click)="update(hero)">Update</button>&nbsp;
+              <button type="button" class="btn btn-danger btn-sm" title="delete hero" (click)="delete(hero)">Delete</button>
             </td>
           </tr>
         </tbody>

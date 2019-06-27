@@ -15,7 +15,7 @@ import { Power } from '../models/power.model';
 export class HeroDetailComponent implements OnInit {
   @Input() hero: Hero;
   powers: Power[];
-  // heroPowers: Power[];
+  heroPowers: Power[];
 
   constructor(
     private route: ActivatedRoute,

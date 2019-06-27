@@ -1,0 +1,19 @@
+<div *ngIf="power">
+
+  <h2>{{power.name | uppercase}} Details</h2>
+
+  <div class="row">
+    <div class="col-md-6">
+      <span>Power ID: </span>{{power.id}}
+    </div>
+  </div>
+ 
+  <div class="row">
+    <div class="col-md-6">
+      <label>Name: <input class="form-control" [(ngModel)]="power.name" placeholder="name" /></label>
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-secondary btn-sm" (click)="goBack()">Back</button>&nbsp;
+  <button type="button" class="btn btn-success btn-sm" (click)="save()">Save</button>
+</div>

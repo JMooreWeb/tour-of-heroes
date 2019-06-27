@@ -7,10 +7,10 @@
 </div> -->
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-12">
     <div class="input-group">
       <div class="input-group-prepend">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon1">Power Name</button>
+        <button class="btn btn-secondary" type="button" id="button-addon1">Power Name</button>
       </div>
       <input #powerName type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
       <div class="input-group-append" id="button-addon4">
@@ -33,12 +33,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let power of powers">
+        <tr *ngFor="let power of powers" routerLink="/power/detail/{{power.id}}" style="cursor: pointer;">
           <td>{{ power.id }}</td>
           <td>{{ power.name }}</td>
           <td>
-            <button type="button" class="btn btn-info" title="update power" (click)="update(power)">Update</button>&nbsp;
-            <button type="button" class="btn btn-danger" title="delete power" (click)="delete(power)">Delete</button>
+            <button type="button" class="btn btn-info btn-sm" title="update power" (click)="update(power)">Update</button>&nbsp;
+            <button type="button" class="btn btn-danger btn-sm" title="delete power" (click)="delete(power)">Delete</button>
           </td>
         </tr>
       </tbody>

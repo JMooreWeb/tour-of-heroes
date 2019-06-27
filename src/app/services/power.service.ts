@@ -7,6 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Hero } from '../models/hero.model';
 import { Power } from '../models/power.model';
 import { MessageService } from './message.service';
+import { ToastrService } from 'ngx-toastr';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,7 +18,7 @@ export class PowerService {
 
   private powersUrl = 'api/powers';
 
-  constructor(private http: HttpClient, private messageService: MessageService) { }
+  constructor(private http: HttpClient, private messageService: MessageService, private toastr: ToastrService) { }
 
   /** GET hero powers from the server */
   getAllPowers(): Observable<Power[]> {
@@ -102,7 +103,12 @@ export class PowerService {
   }
 
   /** Log a HeroService message with the MessageService */
+  // private log(message: string) {
+  //   this.messageService.add(`PowerService: ${message}`);
+  // }
+
   private log(message: string) {
-    this.messageService.add(`PowerService: ${message}`);
+    this.toastr.success(`PowerService: ${message}`);
   }
+
 }
