@@ -4,9 +4,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { Hero } from '../models/hero.model';
-import { Power } from '../models/power.model';
-import { MessageService } from './message.service';
+import { Hero } from './hero.model';
+import { Power } from '../powers/power.model';
+import { MessageService } from '../messages/message.service';
 import { ToastrService } from 'ngx-toastr';
 
 const httpOptions = {
@@ -135,6 +135,6 @@ export class HeroService {
   // }
 
   private log(message: string) {
-    this.toastr.success(`HeroService: ${message}`);
+    // this.toastr.success(`HeroService: ${message}`);
   }
 }

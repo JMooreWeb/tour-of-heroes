@@ -18,6 +18,8 @@
 
 <br>
 
+<!-- <p>Hero Count: {{ heroes?.length }}</p> -->
+
 <div class="row">
     <div class="col-md-12">
       <table class="table table-sm table-border table-collapse table-hover">
@@ -25,16 +27,16 @@
           <tr>
             <th>ID#</th>
             <th>Name</th>
-            <th>Manage</th>
+            <th style="text-align: right;">Manage</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let hero of heroes" routerLink="/hero/detail/{{hero.id}}" style="cursor: pointer;">
             <td><a>{{ hero.id }}</a></td>
             <td>{{ hero.name }}</td>
-            <td>
-              <button type="button" class="btn btn-info btn-sm" title="update hero" (click)="update(hero)">Update</button>&nbsp;
-              <button type="button" class="btn btn-danger btn-sm" title="delete hero" (click)="delete(hero)">Delete</button>
+            <td style="text-align: right;">
+              <button type="button" class="btn btn-info btn-sm" title="Edit Hero ID: {{hero.id}}" (click)="edit(hero)">Edit</button>&nbsp;
+              <button type="button" class="btn btn-danger btn-sm" title="Delete Hero ID: {{hero.id}}" (click)="delete(hero)">Delete</button>
             </td>
           </tr>
         </tbody>

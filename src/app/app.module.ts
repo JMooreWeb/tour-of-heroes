@@ -2,32 +2,31 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './services/in-memory-data.service';
+import { InMemoryDataService } from './in-memory-data.service';
 
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
-import { HeroesComponent } from './heroes/heroes.component';
-import { HeroSearchComponent } from './hero-search/hero-search.component';
-import { MessagesComponent } from './messages/messages.component';
-import { PowersComponent } from './powers/powers.component';
-import { PowerDetailComponent } from './power-detail/power-detail.component';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { SharedModule } from './shared/shared.module';
+import { NotFoundComponent } from './not-found.component';
+import { MessagesComponent } from './messages/messages.component';
+import { HeroesModule } from './heroes/heroes.module';
+import { HeroSearchComponent } from './heroes/hero-search/hero-search.component';
 
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
-    AppRoutingModule,
     HttpClientModule,
-    CoreModule,
-    BrowserAnimationsModule, // required animations module
+    SharedModule,
+    HeroesModule,
     ToastrModule.forRoot({
       timeOut: 0,
       positionClass: 'toast-top-right',
@@ -37,17 +36,15 @@ import { ToastrModule } from 'ngx-toastr';
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false })
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,
     DashboardComponent,
-    HeroesComponent,
-    HeroDetailComponent,
-    MessagesComponent,
     HeroSearchComponent,
-    PowersComponent,
-    PowerDetailComponent
+    MessagesComponent,
+    NotFoundComponent
   ],
   bootstrap: [ AppComponent ]
 })

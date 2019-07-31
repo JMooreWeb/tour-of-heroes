@@ -1,14 +1,20 @@
 <h3>Top Heroes</h3>
+
 <br>
 
-<a *ngFor="let hero of heroes" routerLink="/hero/detail/{{hero.id}}">
-  <div class="col-sm-3">
-    <div class="card text-white bg-dark"> 
-      <div class="card-body">
-        <h5 class="card-title">{{hero.name}}</h5>
-      </div>
+<div class="card-deck">
+  <div *ngFor="let hero of heroes" routerLink="/superhero/detail/{{hero.id}}" class="card">
+    <!-- <img src="..." alt="Card image cap" class="card-img-top"> -->
+    <div class="card-body">
+      <h5 class="card-title">{{hero.name}}</h5>
+      <p class="card-text">{{hero.description}}</p>
+      <p class="card-text"><small class="text-muted">{{hero.lastUpdated}}</small></p>
     </div>
   </div>
-</a>
+</div>
 
-<app-hero-search></app-hero-search>
+<br>
+
+<div>
+  <app-hero-search></app-hero-search>
+</div>

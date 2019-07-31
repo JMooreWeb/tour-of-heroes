@@ -13,6 +13,13 @@
         <label>Name: <input class="form-control" [(ngModel)]="hero.name" placeholder="name" /></label>
       </div>
   </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>Description: <textarea class="form-control" [(ngModel)]="hero.description" placeholder="name" cols="70" rows="3"></textarea></label>
+    </div>
+</div>
+
+<h5>Powers</h5>
 
   <div *ngIf="true" class="row">
     <div class="col-md-12">
@@ -21,15 +28,15 @@
             <tr>
               <th>ID#</th>
               <th>Name</th>
-              <th>Manage</th>
+              <th style="text-align: right">Manage</th>
             </tr>
           </thead>
           <tbody>
-              <tr *ngFor="let power of heroPowers" routerLink="/power/detail/{{power.id}}" style="cursor: pointer;">
+              <tr *ngFor="let power of powers" routerLink="/power/detail/{{power.id}}" style="cursor: pointer;">
               <td>{{ hero.id }}</td>
               <td>{{ hero.name }}</td>
-              <td>
-                  <button type="button" class="btn btn-info btn-sm" title="update power" (click)="update(power)">Update</button>&nbsp;
+              <td style="text-align: right">
+                  <button type="button" class="btn btn-info btn-sm" title="edit power" (click)="edit(power)">Edit</button>&nbsp;
                   <button type="button" class="btn btn-danger btn-sm" title="delete power" (click)="delete(power)">Delete</button>
               </td>
             </tr>

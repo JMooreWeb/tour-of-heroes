@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Power } from '../models/power.model';
-import { PowerService } from '../services/power.service';
+import { Power } from '../power.model';
+import { PowerService } from '../power.service';
 
 import { ToastrService } from 'ngx-toastr';
 

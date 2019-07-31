@@ -1,11 +1,24 @@
 <div id="search-component">
   <h4><label for="search-box">Hero Search</label></h4>
 
-  <input #searchBox id="search-box" (input)="search(searchBox.value)" class="form-control" />
+  <div class="row">
+    <div class="col-md-12">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <button type="button" class="btn btn-secondary" id="button-addon1">Super Hero</button>
+        </div>
+        <input #searchBox type="text" class="form-control" placeholder="" id="search-box" (input)="search(searchBox.value)" />
+        <!-- <input #heroName type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1"> -->
+        <div class="input-group-append" id="button-addon4">
+            <button type="button" class="btn btn-success" (click)="add(heroName.value); heroName.value=''">Search</button>
+          </div>
+      </div>    
+    </div>
+  </div>
 
   <ul class="search-result">
     <li *ngFor="let hero of heroes$ | async" >
-      <a class="btn btn-primary" routerLink="/hero/detail/{{hero.id}}">{{hero.name}}</a>
+      <a class="btn btn-primary" routerLink="/superhero/detail/{{hero.id}}">{{hero.name}}</a>
     </li>
   </ul>
 </div>

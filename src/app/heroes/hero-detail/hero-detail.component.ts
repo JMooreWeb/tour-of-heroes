@@ -2,10 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Hero } from '../models/hero.model';
-import { HeroService } from '../services/hero.service';
-import { PowerService } from '../services/power.service';
-import { Power } from '../models/power.model';
+import { Hero } from '../hero.model';
+import { HeroService } from '../hero.service';
+import { PowerService } from '../../powers/power.service';
+import { Power } from '../../powers/power.model';
 
 @Component({
   selector: 'app-hero-detail',
@@ -42,9 +42,9 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getHeroPowers(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.heroService.getHeroPowers(id)
-      .subscribe(heroPowers => this.hero.powers = heroPowers);
+    // const id = +this.route.snapshot.paramMap.get('id');
+    // this.heroService.getHeroPowers(id)
+    //   .subscribe(heroPowers => this.hero.powers = heroPowers);
   }
 
   goBack(): void {
@@ -59,5 +59,10 @@ export class HeroDetailComponent implements OnInit {
   addPower(): void {
     alert('Add hero power...');
   }
+
+  edit(): void {
+    alert('Edit hero...');
+  }
+
 }
 
